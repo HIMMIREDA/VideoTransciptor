@@ -1,3 +1,12 @@
-.label{
+.root {
+    -fx-font-family: Inter;
+}
+
+.label {
     -fx-text-fill: "white";
 }
+
+.choice-box .label {
+    -fx-text-fill: #000;
+}
+

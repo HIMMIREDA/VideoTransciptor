@@ -1,12 +1,6 @@
 package com.ensa.videots;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-
 import java.io.IOException;
-import java.util.List;
-import java.util.Stack;
 
 public class PageNavigator {
     public static final String MAINPAGE = "main.fxml";
