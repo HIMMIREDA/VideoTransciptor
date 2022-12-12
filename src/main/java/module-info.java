@@ -6,7 +6,8 @@ module com.ensa.videots {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires emojisfx;
+    requires async.http.client;
+    requires java.dotenv;
 
     opens com.ensa.videots to javafx.fxml;
     exports com.ensa.videots;

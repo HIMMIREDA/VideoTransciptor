@@ -2,6 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+*.mp3
+src/main/java/.env
 
 ### IntelliJ IDEA ###
 .idea/modules.xml

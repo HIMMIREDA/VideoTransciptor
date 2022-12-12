@@ -18,11 +18,14 @@ public class MainController {
         pane.getStylesheets().add(getClass().getResource("text-to-speech.css").toExternalForm());
     }
 
-    public void loadPage(String fxml) throws IOException {
-        Node node = FXMLLoader.load(PageNavigator.class.getResource(fxml));
+    public Object loadPage(String fxml) throws IOException {
+        FXMLLoader loader = new FXMLLoader(PageNavigator.class.getResource(fxml));
+        Node node = loader.load();
+
         if (PageNavigator.TEXTTOSPEECHPAGE.equals(fxml)) {
             loadTextToSpeechPage((Pane) node);
         }
         pagesStack.getChildren().setAll(node);
+        return loader.getController();
     }
 }

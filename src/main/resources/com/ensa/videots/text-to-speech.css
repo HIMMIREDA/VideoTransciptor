@@ -10,3 +10,11 @@
     -fx-text-fill: #000;
 }
 
+#exportButton{
+    -fx-background-color: #6BA6DD;
+}
+#exportButton:hover{
+    -fx-background-color: #ABDBE3;
+
+}
+

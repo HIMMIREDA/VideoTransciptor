@@ -1,63 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Blend?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: #373737; -fx-text-fill: white;"
-      xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="com.ensa.videots.TextToSpeechController">
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="10.0" style="-fx-background-color: #373737; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ensa.videots.TextToSpeechController">
     <padding>
-        <Insets top="40.0"/>
+        <Insets top="40.0" />
     </padding>
     <effect>
-        <Blend/>
+        <Blend />
     </effect>
     <children>
+      <Label alignment="CENTER" prefHeight="26.0" prefWidth="244.0" text="Text-To-Speech" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
         <HBox alignment="CENTER" prefHeight="80.0" prefWidth="599.0">
             <children>
-                <Label alignment="CENTER" prefHeight="30.0" prefWidth="159.0"
-                       style="-fx-font-size: 20px; -fx-text-fill: #fff;" text="Language :">
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="159.0" style="-fx-font-size: 20px; -fx-text-fill: #fff;" text="Language :">
                     <font>
-                        <Font name="System Bold" size="40.0"/>
+                        <Font name="System Bold" size="40.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="languageComboBox" onAction="#onChangeValue" prefWidth="150.0"/>
+                <ComboBox fx:id="languageComboBox" onAction="#onLanguageChangeValue" prefHeight="25.0" prefWidth="255.0" />
             </children>
         </HBox>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="50.0" prefHeight="73.0" prefWidth="596.0">
             <children>
-                <Label alignment="CENTER" prefHeight="30.0" prefWidth="159.0"
-                       style="-fx-font-size: 20px; -fx-text-fill: #fff;" text="Voice: ">
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="159.0" style="-fx-font-size: 20px; -fx-text-fill: #fff;" text="Voice: ">
                     <font>
-                        <Font size="40.0"/>
+                        <Font size="40.0" />
                     </font>
                 </Label>
-                <ComboBox fx:id="voiceComboBox" prefWidth="150.0"/>
+                <ComboBox fx:id="voiceComboBox" prefHeight="25.0" prefWidth="250.0" />
             </children>
         </HBox>
         <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="107.0" prefWidth="593.0">
             <children>
-                <Label alignment="CENTER" prefHeight="30.0" prefWidth="159.0"
-                       style="-fx-font-size: 20px; -fx-text-fill: #fff;" text="Text:">
+                <Label alignment="CENTER" prefHeight="30.0" prefWidth="159.0" style="-fx-font-size: 20px; -fx-text-fill: #fff;" text="Text:">
                     <font>
-                        <Font size="40.0"/>
+                        <Font size="40.0" />
                     </font>
                 </Label>
-                <TextArea prefHeight="107.0" prefWidth="161.0" promptText="text must not surpass 1000 character"/>
+                <TextArea fx:id="textToprocessField" prefHeight="153.0" prefWidth="252.0" promptText="text must not surpass 1000 character" />
             </children>
         </HBox>
-        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <children>
-                <Button mnemonicParsing="false" style="-fx-background-color: #6BA6DD; -fx-text-fill: #fff;"
-                        text="Export .mp3">
+      <VBox alignment="CENTER" prefHeight="85.0" prefWidth="599.0" spacing="20.0">
+         <children>
+            <Label fx:id="errorLabel" textFill="#da3535">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+                <Button fx:id="exportButton" mnemonicParsing="false" onAction="#onExportBtnClick" style=" -fx-text-fill: #fff; -fx-cursor: hand;" text="Export .mp3">
                     <font>
-                        <Font name="System Bold" size="16.0"/>
+                        <Font name="System Bold" size="16.0" />
                     </font>
                 </Button>
-            </children>
-        </HBox>
+         </children>
+      </VBox>
     </children>
 </VBox>

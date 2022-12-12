@@ -5,6 +5,8 @@ import java.io.IOException;
 public class PageNavigator {
     public static final String MAINPAGE = "main.fxml";
     public static final String TEXTTOSPEECHPAGE = "text-to-speech.fxml";
+    public static final String TEXTTOSPEECHREADYPAGE = "text-to-speech-ready.fxml";
+
 
     private static MainController mainController;
 
@@ -14,13 +16,15 @@ public class PageNavigator {
     }
 
 
-    public static void loadPage(String fxml) {
+    public static Object loadPage(String fxml) {
+        Object pageController = null;
         try {
-            mainController.loadPage(fxml);
+            pageController = mainController.loadPage(fxml);
         } catch (IOException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
 
         }
+        return pageController;
     }
 }
