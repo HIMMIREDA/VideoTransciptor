@@ -17,7 +17,7 @@ public class Main extends Application {
         Pane mainPane = (Pane) loader.load(getClass().getResourceAsStream(PageNavigator.MAINPAGE));
         MainController mainController = loader.getController();
         PageNavigator.setMainController(mainController);
-        PageNavigator.loadPage(PageNavigator.TEXTTOSPEECHPAGE);
+        PageNavigator.loadPage(PageNavigator.SETTINGSPAGE);
         return mainPane;
     }
 

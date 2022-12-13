@@ -6,6 +6,13 @@ public class PageNavigator {
     public static final String MAINPAGE = "main.fxml";
     public static final String TEXTTOSPEECHPAGE = "text-to-speech.fxml";
     public static final String TEXTTOSPEECHREADYPAGE = "text-to-speech-ready.fxml";
+    public static final String SETTINGSPAGE = "settings.fxml";
+    public static final String SPEECHRECOGNITIONPAGE = "speech-recognition.fxml";
+    public static final String VIDEOTRANSCRIPTIONPAGE = "video-transcription.fxml";
+    public static final String INFOSPAGE = "infos.fxml";
+
+
+
 
 
     private static MainController mainController;

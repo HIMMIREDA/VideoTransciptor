@@ -7,6 +7,14 @@
 }
 
 
+#settingsMenuButton:hover, #micMenuButton:hover, #textToSpeechMenuButton:hover, #videoTransMenuButton:hover, #infoMenuButton:hover {
+    -fx-background-color: #D2E4F1;
+}
+#settingsMenuButton:focused,#micMenuButton:focused,#textToSpeechMenuButton:focused,#videoTransMenuButton:focused,#infoMenuButton:focused{
+    -fx-background-color: #D2E4F1;
+}
+
+
 #settingsMenuButton {
     -fx-background-image: url("./icons/reglages.png");
     -fx-background-size: 30px 30px;
