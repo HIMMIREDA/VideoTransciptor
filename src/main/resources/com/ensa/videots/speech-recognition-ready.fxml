@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="555.0" style="-fx-background-color: #373737;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Text fill="WHITE" layoutX="173.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Text is Ready " textAlignment="CENTER" wrappingWidth="212.1365966796875">
+            <font>
+                <Font size="22.0" />
+            </font></Text>
+        <ImageView fitHeight="50.0" fitWidth="48.0" layoutX="256.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@icons/smile-beam.png" />
+            </image>
+        </ImageView>
+        <Button layoutX="169.0" layoutY="194.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="222.0" style="-fx-background-color: #6BA6DD; -fx-background-radius: 30;" text="Export .txt file " textAlignment="JUSTIFY" textFill="#fbfbfb">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Button>
+        <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="353.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@icons/download.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
