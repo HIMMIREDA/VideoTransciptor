@@ -1,0 +1,28 @@
+.root{
+    -fx-background-color: #373737;
+}
+
+.slidebar{
+    -fx-background-color: #1B1B1B;
+    -fx-background-radius: 0 25 25 0;
+}
+
+.buttonUpload{
+    -fx-background-color: #6BA6DD;
+    -fx-background-radius: 30;
+    -fx-cursor: hand;
+}
+.buttonUpload:hover{
+  -fx-background-color:white;
+  -fx-text-fill:black;
+  -fx-font-weight:bold;
+}
+
+#link{
+    -fx-background-radius: 30;
+    -fx-border-color: #6BA6DD;
+    -fx-border-radius: 30;
+    -fx-border-width: 3;
+    -fx-cursor: text;
+}
+
