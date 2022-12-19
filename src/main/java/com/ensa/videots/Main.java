@@ -4,6 +4,7 @@ package com.ensa.videots;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,7 @@ public class Main extends Application {
         MainController mainController = loader.getController();
         PageNavigator.setMainController(mainController);
         PageNavigator.loadPage(PageNavigator.SETTINGSPAGE);
+        mainPane.lookup("#" + "settingsMenuButton").setStyle("-fx-background-color: #D2E4F1");
         return mainPane;
     }
 
@@ -30,7 +32,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("video transcriptor");
+        stage.setTitle("video transcript");
         stage.setScene(createScene(loadMainPane()));
         stage.setMinWidth(720.0);
         stage.setMaxWidth(720.0);
@@ -39,6 +41,7 @@ public class Main extends Application {
         stage.setOnCloseRequest(event -> {
             try {
                 TextToSpeechController.client.close();
+                BrowseYoutubeController.client.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
