@@ -10,9 +10,7 @@ public class PageNavigator {
     public static final String SPEECHRECOGNITIONPAGE = "speech-recognition.fxml";
     public static final String VIDEOTRANSCRIPTIONPAGE = "video-transcription.fxml";
     public static final String INFOSPAGE = "infos.fxml";
-
-
-
+    public static final String VIDEOTRANSCRIPTIONREADYPAGE = "video-transcription-ready.fxml";
 
 
     private static MainController mainController;
