@@ -1,5 +1,5 @@
 
-#settingsMenuButton, #micMenuButton, #textToSpeechMenuButton, #videoTransMenuButton, #infoMenuButton {
+#settingsMenuButton, #micMenuButton, #textToSpeechMenuButton, #videoTransMenuButton, #infoMenuButton,#browseYoutubeMenuButton {
     -fx-background-color: "#000";
     -fx-min-width: 35px;
     -fx-min-height: 35px;
@@ -7,12 +7,10 @@
 }
 
 
-#settingsMenuButton:hover, #micMenuButton:hover, #textToSpeechMenuButton:hover, #videoTransMenuButton:hover, #infoMenuButton:hover {
+#settingsMenuButton:hover, #micMenuButton:hover, #textToSpeechMenuButton:hover, #videoTransMenuButton:hover, #infoMenuButton:hover,#browseYoutubeMenuButton:hover {
     -fx-background-color: #D2E4F1;
 }
-#settingsMenuButton:focused,#micMenuButton:focused,#textToSpeechMenuButton:focused,#videoTransMenuButton:focused,#infoMenuButton:focused{
-    -fx-background-color: #D2E4F1;
-}
+
 
 
 #settingsMenuButton {
@@ -49,6 +47,13 @@
 
 #videoTransMenuButton {
     -fx-background-image: url("./icons/video-camera-alt.png");
+    -fx-background-size: 30px 30px;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+
+}
+#browseYoutubeMenuButton {
+    -fx-background-image: url("./icons/browseyoutube.png");
     -fx-background-size: 30px 30px;
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
