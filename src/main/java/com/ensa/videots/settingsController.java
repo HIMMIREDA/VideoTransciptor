@@ -1,0 +1,89 @@
+package com.ensa.videots;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import javafx.stage.DirectoryChooser;
+
+import java.io.File;
+import java.nio.file.Paths;
+
+public class settingsController {
+
+    @FXML
+    public Label pathName;
+    @FXML
+    public Label pathName1;
+    public static File selectedDirectory;
+    public static File selectedDirectory1;
+    Path path = Paths.get("src/main/resources/com/ensa/videots/pathToSaveAudio.txt");
+    Path path1 = Paths.get("src/main/resources/com/ensa/videots/pathToSaveText.txt");
+
+
+    public void initialize() throws IOException {
+        if (selectedDirectory == null){
+            String home = System.getProperty("user.home");
+            File file = new File(home+"/Downloads/");
+            if(pathName != null) {
+                pathName.setText(String.valueOf(file));
+            }
+        }
+        else {
+            pathName.setText(selectedDirectory.getAbsolutePath());
+        }
+
+        // for the text path location
+        if (selectedDirectory1 == null){
+            String home = System.getProperty("user.home");
+            File file = new File(home+"/Downloads/");
+            if(pathName1 != null) {
+                pathName1.setText(String.valueOf(file));
+            }
+        }
+        else {
+            pathName1.setText(selectedDirectory1.getAbsolutePath());
+        }
+
+        // get the path where to stock the Audio file(path)
+        pathName.setText(Files.readString(path));
+        pathName1.setText(Files.readString(path1));
+
+    }
+
+
+    public void changePressed(MouseEvent mouseEvent) {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        selectedDirectory = directoryChooser.showDialog(null);
+        if (selectedDirectory == null){return;}
+        pathName.setText(selectedDirectory.getAbsolutePath());
+
+        try {
+            // Now calling Files.writeString() methode with path , content & standard charsets
+            Files.writeString(path, pathName.getText(), StandardCharsets.UTF_8);
+        }
+        catch (IOException ex) {
+            System.out.print("Invalid Path");
+        }
+    }
+
+// for the second Location (text)
+    public void changePressed1(MouseEvent mouseEvent) {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        selectedDirectory1 = directoryChooser.showDialog(null);
+        if (selectedDirectory1 == null){return;}
+        pathName1.setText(selectedDirectory1.getAbsolutePath());
+
+        try {
+            // Now calling Files.writeString() methode with path , content & standard charsets
+            Files.writeString(path1, pathName1.getText(), StandardCharsets.UTF_8);
+        }
+        catch (IOException ex) {
+            System.out.print("Invalid Path");
+        }
+    }
+}
