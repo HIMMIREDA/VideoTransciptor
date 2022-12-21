@@ -1,6 +1,7 @@
 package com.ensa.videots;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class PageNavigator {
     public static final String MAINPAGE = "main.fxml";
