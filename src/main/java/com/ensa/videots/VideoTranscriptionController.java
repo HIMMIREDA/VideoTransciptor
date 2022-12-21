@@ -37,7 +37,7 @@ public class VideoTranscriptionController {
         VideoTranscriptionReadyController controller = (VideoTranscriptionReadyController) PageNavigator.loadPage(PageNavigator.VIDEOTRANSCRIPTIONREADYPAGE);
         controller.addLoader();
         videoToTextReq(controller, selectedFile);
-        controller.stopLoader();
+//        controller.stopLoader();
 
     }
 
