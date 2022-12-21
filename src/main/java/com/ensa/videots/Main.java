@@ -18,6 +18,7 @@ public class Main extends Application {
         MainController mainController = loader.getController();
         PageNavigator.setMainController(mainController);
         PageNavigator.loadPage(PageNavigator.SETTINGSPAGE);
+
         return mainPane;
     }
 
