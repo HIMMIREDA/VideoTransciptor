@@ -4,6 +4,8 @@ target/
 !**/src/test/**/target/
 *.mp3
 src/main/java/.env
+src/main/resources/com/ensa/videots/pathToSaveAudio.txt
+src/main/resources/com/ensa/videots/pathToSaveText.txt
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
