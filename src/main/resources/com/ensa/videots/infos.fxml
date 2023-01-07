@@ -1,22 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Blend?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="437.0" prefWidth="625.0" spacing="40.0" style="-fx-background-color: #373737; -fx-text-fill: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ensa.videots.TextToSpeechReadyController">
-    <padding>
-        <Insets top="40.0" />
-    </padding>
-    <effect>
-        <Blend />
-    </effect>
-    <Label alignment="CENTER" prefHeight="26.0" prefWidth="244.0" text="Infos" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="24.0" />
-        </font>
-    </Label>
-
-</VBox>
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="512.0" minWidth="620.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ensa.videots.VideoTranscriptionController">
+   <children>
+      <Text fill="#f4f4f4" layoutX="264.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="28.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Transcribe Audio or Video to Text:">
+         <font>
+            <Font name="System Italic" size="15.0" />
+         </font>
+      </Text>
+      <Label layoutX="28.0" layoutY="54.0" prefHeight="130.0" prefWidth="560.0" text="-&gt; Video Transcription is a desktop application that allows you to easily transcribe both audio and video &#10;files to text with just one click. Simply upload your audio or video file, then download your transcript. &#10;Our transcription tool supports a wide range of audio and video file types, including MP3, WAV, MP4,&#10;MOV, AVI, and more. It is user-friendly, making it a convenient and efficient option for transcribing your&#10;audio and video content.&#10;-&gt; In Addiction, we offer text-to-speech technology that allows you to convert written text into a spoken&#10;voice output, with different languages (Arabic, French, and English) and voices." textFill="WHITE" />
+      <Text fill="#f4f4f4" layoutX="266.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="21.0" layoutY="245.0" prefHeight="40.0" prefWidth="560.0" text="1- Upload your file:  Click on ‘Upload File’ and select your audio or video file from your folders.&#10;2- Download the Text File: Hit the download button. You’re done!" textFill="WHITE" />
+      <Text fill="#f4f4f4" layoutX="252.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+      <Label layoutX="28.0" layoutY="333.0" prefHeight="80.0" prefWidth="560.0" text="&gt; Design and development: Computer Science students in ENSA Marrakesh&#10;&gt; Graphics and icons: https://www.flaticon.com/&#10;&gt; Special thanks: Our professor, A. Nejoui, and anyone who helped us in the development of this &#10;    application." textFill="WHITE" />
+      <Text fill="WHITE" layoutX="172.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright 2023 ENSA MARRAKECH" textAlignment="CENTER">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+   </children>
+   <stylesheets>
+      <URL value="@style.css" />
+      <URL value="@main.css" />
+      <URL value="@text-to-speech.css" />
+   </stylesheets>
+</AnchorPane>

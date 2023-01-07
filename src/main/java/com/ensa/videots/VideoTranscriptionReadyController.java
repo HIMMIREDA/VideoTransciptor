@@ -29,6 +29,7 @@ public class VideoTranscriptionReadyController {
         loaderImageView.setImage(new Image(getClass().getResourceAsStream("icons/loader.gif")));
         readyText.setText("Processing, please wait...");
         exportButton.setVisible(false);
+        downIcon.setVisible(false);
     }
     public void stopLoader(){
         loaderImageView.setImage(new Image(getClass().getResourceAsStream("icons/smiley_face.png")));
