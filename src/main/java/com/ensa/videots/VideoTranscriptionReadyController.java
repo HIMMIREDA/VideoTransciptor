@@ -35,6 +35,7 @@ public class VideoTranscriptionReadyController {
         loaderImageView.setImage(new Image(getClass().getResourceAsStream("icons/smiley_face.png")));
         readyText.setText("Your text file is ready !");
         exportButton.setVisible(true);
-        exportButton.setGraphic(downIcon);
+        downIcon.setVisible(true);
+
     }
 }

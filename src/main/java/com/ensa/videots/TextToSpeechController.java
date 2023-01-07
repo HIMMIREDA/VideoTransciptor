@@ -15,6 +15,8 @@ import org.asynchttpclient.*;
 import java.io.FileOutputStream;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -108,11 +110,7 @@ public class TextToSpeechController {
             @Override
             public Object onCompleted(Response response) throws Exception {
                 byte[] arrayOfBytes = response.getResponseBodyAsBytes();
-                /*
-                 * @TOADD: add a path where to save files as a setting so user can set it manually
-                 *
-                 */
-                FileOutputStream fos = new FileOutputStream(System.getProperty("user.dir") + "/" + UUID.randomUUID().toString() + ".mp3");
+                FileOutputStream fos = new FileOutputStream(Files.readString(Paths.get("src/main/resources/com/ensa/videots/pathToSaveAudio.txt")) + "/" + UUID.randomUUID().toString() + ".mp3");
                 fos.write(arrayOfBytes, 0, arrayOfBytes.length);
                 fos.flush();
                 fos.close();

@@ -8,6 +8,7 @@ module com.ensa.videots {
     requires org.kordamp.bootstrapfx.core;
     requires async.http.client;
     requires java.dotenv;
+    requires com.google.gson;
 
     opens com.ensa.videots to javafx.fxml;
     exports com.ensa.videots;
