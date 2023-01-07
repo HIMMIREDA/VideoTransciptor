@@ -20,6 +20,7 @@
                 <Button fx:id="micMenuButton" mnemonicParsing="false" onAction="#onMenuButtonClicked" prefHeight="59.0" prefWidth="81.0" />
                 <Button fx:id="textToSpeechMenuButton" layoutX="52.0" layoutY="70.0" mnemonicParsing="false" onAction="#onMenuButtonClicked" prefHeight="25.0" prefWidth="81.0" />
                 <Button fx:id="videoTransMenuButton" layoutX="52.0" layoutY="115.0" mnemonicParsing="false" onAction="#onMenuButtonClicked" prefHeight="25.0" prefWidth="81.0" />
+            <Button fx:id="browseYoutubeMenuButton" mnemonicParsing="false" onAction="#onMenuButtonClicked" prefHeight="25.0" prefWidth="81.0" />
                 <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
                     <children>
                         <Button fx:id="infoMenuButton" mnemonicParsing="false" onAction="#onMenuButtonClicked" prefHeight="25.0" prefWidth="81.0" />
