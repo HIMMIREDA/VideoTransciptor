@@ -24,11 +24,11 @@ public class VideoTranscriptionController {
     public void buttonPressed() {
         // choose file
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Videos Files", "*.mp4"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Videos Files", "*.mp4","*.mp3", "*.wav", "*.mov", "*.avi"));
         // The URL of the video will stored in the selectedFile variable
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile == null) {
-            errorLabel.setText("  No Video file is selected !");
+            errorLabel.setText("  No file is selected !");
             errorLabel.setTextFill(Paint.valueOf("red"));
             return;
         }
