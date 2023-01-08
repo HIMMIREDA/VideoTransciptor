@@ -8,7 +8,6 @@ import javafx.scene.image.ImageView;
 public class TextToSpeechReadyController {
     @FXML
     private ImageView loaderImageView;
-
     @FXML
     private Label readyLabel;
 
