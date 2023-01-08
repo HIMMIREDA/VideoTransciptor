@@ -99,9 +99,10 @@ public class TextToSpeechController {
         TextToSpeechReadyController controller = (TextToSpeechReadyController) PageNavigator.loadPage(PageNavigator.TEXTTOSPEECHREADYPAGE);
         controller.addLoader();
         sendTextToSpeechReq(controller, text, language, voice);
-
+        System.out.println("test");
 
     }
+
 
     public void sendTextToSpeechReq(TextToSpeechReadyController controller, String text, String language, String voice) {
         Dotenv dotenv = Dotenv.configure().directory("./src/main/java").load();

@@ -9,14 +9,11 @@ public final class Chronometer {
     IntegerProperty ss  = new SimpleIntegerProperty();
     IntegerProperty th  = new SimpleIntegerProperty();
     IntegerProperty hd  = new SimpleIntegerProperty();
-
     IntegerProperty cpt = new SimpleIntegerProperty();
 
-    public Chronometer() {
+    public Chronometer() {}
 
-    }
-
-    void reset() {
+    void reset(){
         hh.set(0);
         mm.set(0);
         ss.set(0);
@@ -33,5 +30,9 @@ public final class Chronometer {
         mm.set((cpt.get() / 6000) % 60);
         hh.set((cpt.get() / 360000) % 24);
     }
+
+
+
+
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="555.0" style="-fx-background-color: #373737;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ensa.videots.SpeechRecognitionController">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="555.0" style="-fx-background-color: #373737;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ensa.videots.SpeechRecognitionController">
     <children>
         <Text fill="WHITE" layoutX="174.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Audio Recognition " textAlignment="CENTER" wrappingWidth="212.1365966796875">
             <font>
@@ -19,29 +20,25 @@
                 <Image url="@icons/microphone2.png" />
             </image>
         </ImageView>
-        <Label fx:id="time" layoutX="231.0" layoutY="180.0" text="00:00:00:00" textFill="WHITE">
+        <Label fx:id="time" layoutX="231.0" layoutY="166.0" text="00:00:00:00" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="18.0" />
             </font></Label>
-        <Button layoutX="134.0" layoutY="290.0" mnemonicParsing="false" onAction="#stop" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="Stop " textAlignment="CENTER" textFill="WHITE">
+        <Button layoutX="386.0" layoutY="226.0" mnemonicParsing="false" onAction="#stop" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="End" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="316.0" layoutY="226.0" mnemonicParsing="false" onAction="#restart" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="Restart " textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="start" layoutX="60.0" layoutY="226.0" mnemonicParsing="false" onAction="#start" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="Start " textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button layoutX="316.0" layoutY="290.0" mnemonicParsing="false" onAction="#exit" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="Exit" textAlignment="CENTER" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
-        <Button layoutX="134.0" layoutY="226.0" mnemonicParsing="false" onAction="#start" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="Start " textAlignment="CENTER" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Button>
+      <ChoiceBox fx:id="choice" layoutX="205.0" layoutY="237.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="223.0" layoutY="204.0" prefHeight="18.0" prefWidth="114.0" text="Select a Language" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>

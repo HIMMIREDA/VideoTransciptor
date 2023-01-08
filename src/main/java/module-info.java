@@ -9,6 +9,7 @@ module com.ensa.videots {
     requires async.http.client;
     requires java.dotenv;
     requires com.google.gson;
+    requires java.desktop;
 
     opens com.ensa.videots to javafx.fxml;
     exports com.ensa.videots;
