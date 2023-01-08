@@ -24,12 +24,14 @@ public class AudioRecorder {
             }
         });
 
+
     public AudioRecorder() throws LineUnavailableException {
     }
 
     public void begin() throws LineUnavailableException {
         targetLine.open();
         targetLine.start();
+        audioRecorderThread.setDaemon(true);
         audioRecorderThread.start();
     }
 

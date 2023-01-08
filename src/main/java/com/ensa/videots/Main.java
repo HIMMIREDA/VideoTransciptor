@@ -31,7 +31,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
         stage.setTitle("video transcript");
         stage.setScene(createScene(loadMainPane()));
         stage.setMinWidth(720.0);
