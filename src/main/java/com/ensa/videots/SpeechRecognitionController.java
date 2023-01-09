@@ -30,11 +30,14 @@ public final class SpeechRecognitionController{
     @FXML
     private Button end;
 
+    @FXML
+    private Label errorMsgLabel;
+
     private Chronometer chrono;
 
     private Timeline timeline;
 
-    private String[] languages = {"English","French","Spanish","Arabic"};
+    private String[] languages = {"English","French","Spanish"};
 
     private AudioRecorder audioRecorder = new AudioRecorder();
 
@@ -54,11 +57,14 @@ public final class SpeechRecognitionController{
 
     @FXML
     private void start() throws LineUnavailableException {
+        errorMsgLabel.setText("");
         if (choice.getValue() != null) {
             timeline.play();
             audioRecorder.begin();
             start.setVisible(false);
             end.setVisible(true);
+        }else {
+            errorMsgLabel.setText("Please select a language !");
         }
     }
     @FXML
