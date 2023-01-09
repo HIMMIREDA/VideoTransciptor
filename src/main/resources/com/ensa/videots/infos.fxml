@@ -13,27 +13,22 @@
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="28.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How to Transcribe Audio or Video to Text:">
-         <font>
-            <Font name="System Italic" size="15.0" />
-         </font>
-      </Text>
       <Label layoutX="28.0" layoutY="54.0" prefHeight="130.0" prefWidth="560.0" text="-&gt; Video Transcription is a desktop application that allows you to easily transcribe both audio and video &#10;files to text with just one click. Simply upload your audio or video file, then download your transcript. &#10;Our transcription tool supports a wide range of audio and video file types, including MP3, WAV, MP4,&#10;MOV, AVI, and more. It is user-friendly, making it a convenient and efficient option for transcribing your&#10;audio and video content.&#10;-&gt; In Addiction, we offer text-to-speech technology that allows you to convert written text into a spoken&#10;voice output, with different languages (Arabic, French, and English) and voices." textFill="WHITE" />
       <Text fill="#f4f4f4" layoutX="266.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Infos" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Label layoutX="21.0" layoutY="245.0" prefHeight="40.0" prefWidth="560.0" text="1- Upload your file:  Click on ‘Upload File’ and select your audio or video file from your folders.&#10;2- Download the Text File: Hit the download button. You’re done!" textFill="WHITE" />
-      <Text fill="#f4f4f4" layoutX="252.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits" textAlignment="CENTER">
+      <Label layoutX="30.0" layoutY="225.0" prefHeight="87.0" prefWidth="560.0" text="There are different ways to transcribe a video: &#10;1- Click on ‘Upload File’ button and select your audio or video file from your folders. Then download &#10;     the text file of the transcript once it is finished.&#10;2- Provide the YouTube link of the video .&#10;3- Browse the YouTube videos using the navigation page and select the one you want to transcribe.&#10;" textFill="WHITE" />
+      <Text fill="#f4f4f4" layoutX="255.0" layoutY="356.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Credits" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="30.0" />
          </font>
       </Text>
-      <Label layoutX="28.0" layoutY="333.0" prefHeight="80.0" prefWidth="560.0" text="&gt; Design and development: Computer Science students in ENSA Marrakesh&#10;&gt; Graphics and icons: https://www.flaticon.com/&#10;&gt; Special thanks: Our professor, A. Nejoui, and anyone who helped us in the development of this &#10;    application." textFill="WHITE" />
-      <Text fill="WHITE" layoutX="172.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright 2023 ENSA MARRAKECH" textAlignment="CENTER">
+      <Label layoutX="25.0" layoutY="359.0" prefHeight="80.0" prefWidth="560.0" text="&gt; Design and development: Computer Science students in ENSA Marrakesh&#10;&gt; Graphics and icons: https://www.flaticon.com/&#10;&gt; Special thanks: Our professor, Mr. Nejeoui, and anyone who helped us in the development of this &#10;    application." textFill="WHITE" />
+      <Text fill="WHITE" layoutX="178.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright 2023 ENSA MARRAKECH" textAlignment="CENTER">
          <font>
-            <Font size="15.0" />
+            <Font name="Verdana" size="13.0" />
          </font>
       </Text>
    </children>

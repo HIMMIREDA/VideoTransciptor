@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -33,6 +34,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         stage.setTitle("video transcript");
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("icons/transcription_logo.png")));
         stage.setScene(createScene(loadMainPane()));
         stage.setMinWidth(720.0);
         stage.setMaxWidth(720.0);
