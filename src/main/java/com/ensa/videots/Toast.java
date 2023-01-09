@@ -40,7 +40,6 @@ public final class Toast {
 
     private void setToast(int toastType, String content) {
         textToast.setText(content);
-        textToast.setWrapText(true);
         switch (toastType) {
             case TOAST_SUCCESS:
                 containerToast.setStyle("-fx-background-color: #9FFF96");
@@ -66,12 +65,12 @@ public final class Toast {
         double dialogW = dialog.getOwner().getWidth();
         double dialogH = dialog.getOwner().getHeight();
 
-        double posX = dialogX + dialogW - 208;
+        double posX = dialogX + dialogW - 408;
         double posY = dialogY + 35;
         dialog.setX(posX);
         dialog.setY(posY);
-        dialog.setWidth(200);
-        dialog.setHeight(50);
+        dialog.setWidth(400);
+        dialog.setHeight(100);
 
         try {
             FXMLLoader loader = new FXMLLoader();

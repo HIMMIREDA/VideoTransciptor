@@ -80,7 +80,7 @@ public final class SpeechRecognitionController{
         }
         Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
         // create new thread
-        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(null,AudioRecorder.pathOfSavedAudioFile,stage,choice.getValue());
+        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(null,AudioRecorder.pathOfSavedAudioFile,stage,choice.getValue(),PageNavigator.SPEECHRECOGNITIONPAGE);
         videoTranscriptionHandlerThread.setDaemon(true);
         videoTranscriptionHandlerThread.start();
     }

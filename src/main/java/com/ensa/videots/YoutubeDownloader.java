@@ -4,6 +4,7 @@ import com.sapher.youtubedl.YoutubeDL;
 import com.sapher.youtubedl.YoutubeDLException;
 import com.sapher.youtubedl.YoutubeDLRequest;
 import com.sapher.youtubedl.YoutubeDLResponse;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -18,12 +19,14 @@ public class YoutubeDownloader extends Thread {
     private final String videoUrl;
     private final Stage stage;
     private String downloadedVideoFileName = null;
+    private final String previousInterface;
     private final Object monitor;
 
-    public YoutubeDownloader(String videoUrl, Stage stage, Object monitor) {
+    public YoutubeDownloader(String videoUrl, Stage stage, Object monitor,String previousInterface) {
         this.videoUrl = videoUrl;
         this.stage = stage;
         this.monitor = monitor;
+        this.previousInterface = previousInterface;
     }
 
     @Override
@@ -37,8 +40,14 @@ public class YoutubeDownloader extends Thread {
                     monitor.notify();
                 }
             } catch (YoutubeDLException | IOException e) {
-                Toast.showToast(stage, e.getMessage(), Toast.TOAST_ERROR);
-
+                Toast.showToast(stage, e.getMessage()  == null ? "sorry an error occured !" : e.getMessage(), Toast.TOAST_ERROR);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        PageNavigator.loadPage(previousInterface);
+                    }
+                });
+                ((VideoTranscriptionHandler) monitor).interrupt();
             }
         }
     }

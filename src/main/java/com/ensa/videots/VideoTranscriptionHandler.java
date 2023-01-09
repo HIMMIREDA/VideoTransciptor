@@ -6,13 +6,14 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +27,7 @@ public class VideoTranscriptionHandler extends Thread {
     private String transcriptionLanguage;
     private static final Map<String, String> mapOfLanguages = new HashMap<>();
     private String filePath;
+    private final String previousInterface;
 
     static {
         mapOfLanguages.put("English", "en");
@@ -34,14 +36,15 @@ public class VideoTranscriptionHandler extends Thread {
     }
 
 
-    public VideoTranscriptionHandler(String videoUrl, String filePath, Stage stage, String language) {
+    public VideoTranscriptionHandler(String videoUrl, String filePath, Stage stage, String language,String previousInterface) {
         if (videoUrl != null) {
-            this.youtubeDownloaderThread = new YoutubeDownloader(videoUrl, stage, this);
+            this.youtubeDownloaderThread = new YoutubeDownloader(videoUrl, stage, this,previousInterface);
             youtubeDownloaderThread.setDaemon(true);
         }
         this.filePath = filePath;
         this.stage = stage;
         this.transcriptionLanguage = language;
+        this.previousInterface = previousInterface;
     }
 
     @Override
@@ -70,7 +73,14 @@ public class VideoTranscriptionHandler extends Thread {
                 getTranscription(youtubeDownloaderThread != null ? youtubeDownloaderThread.getDownloadedVideoFileName() : filePath);
             } catch (Exception e) {
                 e.printStackTrace();
-                Toast.showToast(stage, e.getMessage(), Toast.TOAST_ERROR);
+                Toast.showToast(stage, e.getMessage() == null ? "sorry an error occured !" : e.getMessage(), Toast.TOAST_ERROR);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        PageNavigator.loadPage(previousInterface);
+                    }
+                });
+                return;
             }
             Platform.runLater(new Runnable() {
                 @Override
@@ -153,10 +163,15 @@ public class VideoTranscriptionHandler extends Thread {
         HttpResponse<String> getSrtResponse = HttpClient.newBuilder()
                 .build()
                 .send(getSrtRequest, HttpResponse.BodyHandlers.ofString());
-        Pattern pattern = Pattern.compile("mp4|mp3|wav|mov");
+        String slashPattern = Pattern.quote(System.getProperty("file.separator"));
+        Pattern pattern = Pattern.compile("([^/\\\\]+(\\.(?i)(mp4|mp3|wav|mov?))$)");
         Matcher matcher = pattern.matcher(filePath);
-        String srtFileName = matcher.replaceAll("srt");
-        try (BufferedWriter bf = new BufferedWriter(new FileWriter(srtFileName))) {
+        String srtFileName = "";
+        if (matcher.find()) {
+            srtFileName = matcher.group(1);
+        }
+        srtFileName = srtFileName.replaceAll("\\.mp4|\\.mp3|\\.wav|\\.mov","");
+        try (BufferedWriter bf = new BufferedWriter(new FileWriter(Files.readString(Paths.get("src/main/resources/com/ensa/videots/pathToSaveText.txt")) + File.separator + srtFileName + ".srt"))) {
             bf.write(getSrtResponse.body().toString());
         } catch (IOException ex) {
             ex.printStackTrace();
