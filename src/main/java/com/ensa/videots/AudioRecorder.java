@@ -3,6 +3,8 @@ package com.ensa.videots;
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class AudioRecorder {
 
@@ -26,9 +28,14 @@ public class AudioRecorder {
         }
         audioRecorderThread = new Thread(() -> {
             if (!audioRecorderThread.isInterrupted()) {
-
+                String directory = "";
                 AudioInputStream recordingStream = new AudioInputStream(targetLine);
-                File outputFile = new File("record.wav");
+                try {
+                    directory = Files.readString(Paths.get("src/main/resources/com/ensa/videots/pathToSaveText.txt"));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                File outputFile = new File(directory + File.separator + "record.wav");
                 try {
                     AudioSystem.write(recordingStream, AudioFileFormat.Type.WAVE, outputFile);
                     pathOfSavedAudioFile = outputFile.getAbsolutePath();

@@ -28,9 +28,9 @@ public class VideoTranscriptionHandler extends Thread {
     private String filePath;
 
     static {
-        mapOfLanguages.put("english", "en");
-        mapOfLanguages.put("spanish", "es");
-        mapOfLanguages.put("french", "fr");
+        mapOfLanguages.put("English", "en");
+        mapOfLanguages.put("Spanish", "es");
+        mapOfLanguages.put("French", "fr");
     }
 
 
@@ -108,15 +108,15 @@ public class VideoTranscriptionHandler extends Thread {
     public void getTranscription(String filePath) throws Exception {
         Dotenv dotenv = Dotenv.configure().directory("./src/main/java").load();
         VideoTranscriptItem transcript = new VideoTranscriptItem();
-        System.out.println(java.net.URLDecoder.decode(filePath, StandardCharsets.UTF_8));
         transcript.setAudio_url(upload(filePath));
+        String languageCode = mapOfLanguages.get(transcriptionLanguage);
+        transcript.setLanguage_code(languageCode);
         Gson gson = new Gson();
         String jsonRequest = gson.toJson(transcript);
 
-        String language = mapOfLanguages.get(transcriptionLanguage);
         HttpRequest postRequest = HttpRequest.newBuilder()
                 .uri(new URI("https://api.assemblyai.com/v2/transcript"))
-                .headers("Authorization", dotenv.get("ASSEMBLY_AI_API_KEY"), "language_code", language == null ? "" : language)
+                .headers("Authorization", dotenv.get("ASSEMBLY_AI_API_KEY"))
                 .POST(HttpRequest.BodyPublishers.ofString(jsonRequest))
                 .build();
 
@@ -125,13 +125,12 @@ public class VideoTranscriptionHandler extends Thread {
                 .build()
                 .sendAsync(postRequest, HttpResponse.BodyHandlers.ofString());
 
-        System.out.println(httpResponse.get().body());
 
         transcript = gson.fromJson(httpResponse.get().body(), VideoTranscriptItem.class);
 
         HttpRequest getRequest = HttpRequest.newBuilder()
                 .uri(new URI("https://api.assemblyai.com/v2/transcript/" + transcript.getId()))
-                .header("Authorization", dotenv.get("ASSEMBLY_AI_API_KEY"))
+                .headers("Authorization", dotenv.get("ASSEMBLY_AI_API_KEY"))
                 .GET()
                 .build();
 
@@ -140,7 +139,6 @@ public class VideoTranscriptionHandler extends Thread {
                     .build()
                     .sendAsync(getRequest, HttpResponse.BodyHandlers.ofString());
             transcript = gson.fromJson(getResponse.get().body(), VideoTranscriptItem.class);
-            System.out.println(transcript.getStatus());
             if ("completed".equals(transcript.getStatus()) || "error".equals(transcript.getStatus())) {
                 break;
             }

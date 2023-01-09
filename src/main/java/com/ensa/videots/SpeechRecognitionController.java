@@ -9,6 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import javafx.util.Duration;
 import org.w3c.dom.ls.LSOutput;
 
@@ -39,7 +41,8 @@ public final class SpeechRecognitionController{
 
     private AudioRecorder audioRecorder = new AudioRecorder();
 
-    private boolean state = true;
+
+    public static VideoTranscriptionHandler videoTranscriptionHandlerThread = null;
 
     public SpeechRecognitionController() throws LineUnavailableException {
         chrono   = new Chronometer();
@@ -70,8 +73,15 @@ public final class SpeechRecognitionController{
         timeline.stop();
         chrono.reset();
         audioRecorder.end();
-        start.setVisible(true);
-        end.setVisible(false);
-        choice.setValue(null);
+
+        // stop old thread
+        if (videoTranscriptionHandlerThread != null) {
+            videoTranscriptionHandlerThread.interrupt();
+        }
+        Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+        // create new thread
+        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(null,AudioRecorder.pathOfSavedAudioFile,stage,choice.getValue());
+        videoTranscriptionHandlerThread.setDaemon(true);
+        videoTranscriptionHandlerThread.start();
     }
 }

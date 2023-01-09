@@ -20,9 +20,6 @@ public class VideoTranscriptionController {
     private Label errorLabel;
     public static VideoTranscriptionHandler videoTranscriptionHandlerThread = null;
 
-    public void mousePressed(){
-        System.out.println("SETTINGS HAS BEEN CLICKED");
-    }
 
 // Upload the video button _____________________________________________________________________________
     public void buttonPressed() {
@@ -62,7 +59,7 @@ public class VideoTranscriptionController {
             errorLabel.setTextFill(Paint.valueOf("red"));
             return;
         }
-        if(!Pattern.matches("https://www.youtube.com/watch?v=.*",text)){
+        if(!Pattern.matches("https://www.youtube.com/watch\\?v=.*",text)){
             errorLabel.setText("link must be a youtube video link");
             errorLabel.setTextFill(Paint.valueOf("red"));
             return;

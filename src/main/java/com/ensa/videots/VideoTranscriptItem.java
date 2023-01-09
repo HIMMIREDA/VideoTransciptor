@@ -5,6 +5,7 @@ public class VideoTranscriptItem {
     public String audio_url;
     public String status;
     public String text;
+    public String language_code;
 
     public String upload_url;
 
@@ -16,11 +17,15 @@ public class VideoTranscriptItem {
         return id;
     }
 
+    public void setLanguage_code(String language_code) {
+        this.language_code = language_code == null ? "en" : language_code;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
 
-    public void setAudio_url( String audio_url) {
+    public void setAudio_url(String audio_url) {
         this.audio_url = audio_url;
     }
 
