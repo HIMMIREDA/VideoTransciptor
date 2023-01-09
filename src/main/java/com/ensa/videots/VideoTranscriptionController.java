@@ -40,11 +40,9 @@ public class VideoTranscriptionController {
         }
         Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
         // create new thread
-        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(null,selectedFile.getPath(),stage,null);
+        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(null,selectedFile.getPath(),stage,null,PageNavigator.VIDEOTRANSCRIPTIONPAGE);
         videoTranscriptionHandlerThread.setDaemon(true);
         videoTranscriptionHandlerThread.start();
-
-
     }
 
 
@@ -70,7 +68,7 @@ public class VideoTranscriptionController {
         }
         Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
         // create new thread
-        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(text,null,stage,null);
+        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(text,null,stage,null,PageNavigator.VIDEOTRANSCRIPTIONPAGE);
         videoTranscriptionHandlerThread.setDaemon(true);
         VideoTranscriptionLoadingController controller = (VideoTranscriptionLoadingController) PageNavigator.loadPage(PageNavigator.VIDEOTRANSCRIPTIONLOADINGPAGE);
         controller.addLoader("step 1/2", "Your video is downloading ...");

@@ -56,7 +56,8 @@ public class BrowseYoutubeController {
         getRequest.execute(new AsyncCompletionHandler<Object>() {
             @Override
             public void onThrowable(Throwable t) {
-                t.printStackTrace();
+                String errorMsg = t.getMessage() == null ? "an error has occured":t.getMessage();
+                Toast.showToast((Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null),errorMsg,Toast.TOAST_ERROR);
             }
 
             @Override
@@ -104,7 +105,7 @@ public class BrowseYoutubeController {
                         }
                         Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
                         // create new thread
-                        videoTranscriptionHandlerThread = new VideoTranscriptionHandler("https://www.youtube.com/watch?v=" + videoItem.id.videoId,null,stage,null);
+                        videoTranscriptionHandlerThread = new VideoTranscriptionHandler("https://www.youtube.com/watch?v=" + videoItem.id.videoId,null,stage,null,PageNavigator.BROWSEYOUTUBEPAGE);
                         videoTranscriptionHandlerThread.setDaemon(true);
                         VideoTranscriptionLoadingController controller = (VideoTranscriptionLoadingController) PageNavigator.loadPage(PageNavigator.VIDEOTRANSCRIPTIONLOADINGPAGE);
                         controller.addLoader("step 1/2", "Your video is downloading ...");
