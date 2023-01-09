@@ -24,21 +24,22 @@
             <font>
                 <Font name="System Bold" size="18.0" />
             </font></Label>
-        <Button layoutX="386.0" layoutY="226.0" mnemonicParsing="false" onAction="#stop" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="End" textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="end" layoutX="224.0" layoutY="274.0" mnemonicParsing="false" onAction="#stop" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="End" textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-        <Button fx:id="start" layoutX="60.0" layoutY="226.0" mnemonicParsing="false" onAction="#start" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="Start " textAlignment="CENTER" textFill="WHITE">
+        <Button fx:id="start" layoutX="222.0" layoutY="274.0" mnemonicParsing="false" onAction="#start" prefHeight="48.0" prefWidth="113.0" style="-fx-background-color: #6BA6DD;" text="Start " textAlignment="CENTER" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="14.0" />
             </font>
         </Button>
-      <ChoiceBox fx:id="choice" layoutX="205.0" layoutY="237.0" prefWidth="150.0" />
-      <Label alignment="CENTER" layoutX="223.0" layoutY="204.0" prefHeight="18.0" prefWidth="114.0" text="Select a Language" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
+        <ChoiceBox fx:id="choice" layoutX="205.0" layoutY="237.0" prefWidth="150.0" />
+        <Label alignment="CENTER" layoutX="223.0" layoutY="204.0" prefHeight="18.0" prefWidth="114.0" text="Select a Language" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font size="14.0" />
+            </font>
+        </Label>
+        <Label fx:id="errorMsgLabel" alignment="CENTER" layoutX="168.0" layoutY="341.0" prefHeight="29.0" prefWidth="225.0" textFill="#d71d1d" />
     </children>
 </AnchorPane>
