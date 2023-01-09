@@ -47,7 +47,5 @@ public class AudioRecorder {
         targetLine.stop();
         targetLine.close();
     }
-
-
 }
 

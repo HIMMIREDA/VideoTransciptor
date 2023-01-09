@@ -6,16 +6,18 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.File;
-
+import java.util.regex.Pattern;
 public class VideoTranscriptionController {
 
     @FXML
     private TextField link;
     @FXML
     private Label errorLabel;
-
+    public static VideoTranscriptionHandler videoTranscriptionHandlerThread = null;
     public void mousePressed(){
         System.out.println("SETTINGS HAS BEEN CLICKED");
     }
@@ -24,28 +26,30 @@ public class VideoTranscriptionController {
     public void buttonPressed() {
         // choose file
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Videos Files", "*.mp4"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Videos Files", "*.mp4","*.mp3", "*.wav", "*.mov"));
         // The URL of the video will stored in the selectedFile variable
         File selectedFile = fileChooser.showOpenDialog(null);
         if (selectedFile == null) {
-            errorLabel.setText("  No Video file is selected !");
+            errorLabel.setText("  No file is selected !");
             errorLabel.setTextFill(Paint.valueOf("red"));
             return;
         }
 
-        // Go to the ready page
-        VideoTranscriptionReadyController controller = (VideoTranscriptionReadyController) PageNavigator.loadPage(PageNavigator.VIDEOTRANSCRIPTIONREADYPAGE);
-        controller.addLoader();
-        videoToTextReq(controller, selectedFile);
-//        controller.stopLoader();
+
+        // stop old thread
+        if (videoTranscriptionHandlerThread != null) {
+            videoTranscriptionHandlerThread.interrupt();
+        }
+        Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+        // create new thread
+        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(null,selectedFile.getPath(),stage,null);
+        videoTranscriptionHandlerThread.setDaemon(true);
+        videoTranscriptionHandlerThread.start();
+
 
     }
 
-    private void videoToTextReq(VideoTranscriptionReadyController controller, File selectedFile) {
-        // vid to text ALGORITHME HERE
-    }
-
-//    LINK LABEL AREA__________________________________________________________________________________________
+    //    LINK LABEL AREA__________________________________________________________________________________________
 
     // get the link passed
     public void submitLink(ActionEvent actionEvent) {
@@ -55,15 +59,21 @@ public class VideoTranscriptionController {
             errorLabel.setTextFill(Paint.valueOf("red"));
             return;
         }
-        // Go to the ready page
-        VideoTranscriptionReadyController controller = (VideoTranscriptionReadyController) PageNavigator.loadPage(PageNavigator.VIDEOTRANSCRIPTIONREADYPAGE);
-        controller.addLoader();
-        videoLinkToTextReq(controller, text);
-//        controller.stopLoader();
+        if(!Pattern.matches("https://www.youtube.com/watch?v=.*",text)){
+            errorLabel.setText("link must be a youtube video link");
+            errorLabel.setTextFill(Paint.valueOf("red"));
+            return;
+        }
+        // stop old thread
+        if (videoTranscriptionHandlerThread != null) {
+            videoTranscriptionHandlerThread.interrupt();
+        }
+        Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+        // create new thread
+        videoTranscriptionHandlerThread = new VideoTranscriptionHandler(text,null,stage,null);
+        videoTranscriptionHandlerThread.setDaemon(true);
+        VideoTranscriptionLoadingController controller = (VideoTranscriptionLoadingController) PageNavigator.loadPage(PageNavigator.VIDEOTRANSCRIPTIONLOADINGPAGE);
+        controller.addLoader("step 1/2", "Your video is downloading ...");
+        videoTranscriptionHandlerThread.start();
     }
-
-    private void videoLinkToTextReq(VideoTranscriptionReadyController controller, String text) {
-        //link vidToText ALGORITHME here
-    }
-
 }

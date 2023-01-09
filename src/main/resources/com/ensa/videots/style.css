@@ -26,3 +26,6 @@
     -fx-cursor: text;
 }
 
+.scroll-pane > .viewport {
+    -fx-background-color: #373737;
+}

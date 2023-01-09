@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.control.Label?>
+<AnchorPane prefHeight="512.0" prefWidth="620.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ensa.videots.VideoTranscriptionLoadingController">
+    <children>
+        <Text fx:id="stepText" fill="#f4f4f4" layoutX="81.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="454.7679138183594">
+            <font>
+                <Font name="System Bold" size="30.0" />
+            </font>
+        </Text>
+      <ImageView fx:id="loaderImageView" fitHeight="75.0" fitWidth="77.0" layoutX="270.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="loaderText" fill="#f4f4f4" layoutX="72.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="489.7679138183594">
+         <font>
+            <Font name="System Bold" size="30.0" />
+         </font>
+      </Text>
+    </children>
+</AnchorPane>

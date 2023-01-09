@@ -39,9 +39,9 @@ public class Main extends Application {
         stage.setMaxHeight(512.0);
         stage.setOnCloseRequest(event -> {
             try {
+                //close asynchttp api requests client
                 TextToSpeechController.client.close();
                 BrowseYoutubeController.client.close();
-                //close speech text client
             } catch (IOException e) {
                 e.printStackTrace();
             }

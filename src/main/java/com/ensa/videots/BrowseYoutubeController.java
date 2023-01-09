@@ -16,6 +16,8 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 import org.asynchttpclient.*;
 
 import java.util.Arrays;
@@ -27,12 +29,13 @@ public class BrowseYoutubeController {
     @FXML
     private TilePane videoItemsTilePane;
     @FXML
-    private VBox vboxContainer;
-    @FXML
+
     private Button loadItemsBtn;
     @FXML
     private TextField searchTextField;
     public static AsyncHttpClient client = Dsl.asyncHttpClient();
+
+    public static VideoTranscriptionHandler videoTranscriptionHandlerThread = null;
 
 
     public void initialize() {
@@ -50,10 +53,19 @@ public class BrowseYoutubeController {
                 "https://youtube.googleapis.com/youtube/v3/search?chart=mostPopular&regionCode=MA&maxResults=26&type=video&key=" + dotenv.get("YOUTUBE_API_KEY") + "&part=snippet&order=date" + (pageToken == null ? "" : "&pageToken=" + pageToken) + (searchTextField.getText().isBlank() ? "" : "&q=" + searchTextField.getText().trim())
         );
 
-
         getRequest.execute(new AsyncCompletionHandler<Object>() {
             @Override
+            public void onThrowable(Throwable t) {
+                t.printStackTrace();
+            }
+
+            @Override
             public Object onCompleted(Response response) throws Exception {
+                int statusCode = response.getStatusCode();
+                if (200 > statusCode || statusCode >= 300) {
+                    Toast.showToast((Stage) searchTextField.getScene().getWindow(), "Sorry an error has occured !", Toast.TOAST_ERROR);
+                    return null;
+                }
                 String items = response.getResponseBody();
                 VideoItems videoItems = new Gson().fromJson(items, VideoItems.class);
 
@@ -83,7 +95,21 @@ public class BrowseYoutubeController {
                     button.setOnMouseEntered(e -> button.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;-fx-text-fill: #000;-fx-cursor: hand;"));
                     button.setGraphic(new ImageView(getClass().getResource("icons/thunder.png").toExternalForm()));
                     button.setContentDisplay(ContentDisplay.RIGHT);
-                    // @TODO : add listeners here
+
+                    // download button listener
+                    button.setOnAction(event -> {
+                        // stop old thread
+                        if (videoTranscriptionHandlerThread != null) {
+                            videoTranscriptionHandlerThread.interrupt();
+                        }
+                        Stage stage = (Stage) Stage.getWindows().stream().filter(Window::isShowing).findFirst().orElse(null);
+                        // create new thread
+                        videoTranscriptionHandlerThread = new VideoTranscriptionHandler("https://www.youtube.com/watch?v=" + videoItem.id.videoId,null,stage,null);
+                        videoTranscriptionHandlerThread.setDaemon(true);
+                        VideoTranscriptionLoadingController controller = (VideoTranscriptionLoadingController) PageNavigator.loadPage(PageNavigator.VIDEOTRANSCRIPTIONLOADINGPAGE);
+                        controller.addLoader("step 1/2", "Your video is downloading ...");
+                        videoTranscriptionHandlerThread.start();
+                    });
 
                     vBox.setAlignment(Pos.TOP_CENTER);
                     vBox.setPadding(new Insets(5, 5, 5, 5));

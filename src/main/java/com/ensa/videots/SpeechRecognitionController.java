@@ -4,7 +4,6 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.beans.binding.Bindings;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -23,7 +22,6 @@ public final class SpeechRecognitionController{
     private Label time;
     @FXML
     private ChoiceBox<String> choice;
-
     @FXML
     private Button start;
 
@@ -76,6 +74,4 @@ public final class SpeechRecognitionController{
         end.setVisible(false);
         choice.setValue(null);
     }
-
-
 }
