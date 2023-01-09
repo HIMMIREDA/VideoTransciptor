@@ -11,6 +11,9 @@ module com.ensa.videots {
     requires com.google.gson;
     requires java.desktop;
 
+
     opens com.ensa.videots to javafx.fxml;
+    requires youtubedl.java;
+    requires java.net.http;
     exports com.ensa.videots;
 }

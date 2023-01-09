@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="containerToast" alignment="CENTER" minHeight="50.0" minWidth="200.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ensa.videots.Toast">
+    <children>
+        <Label fx:id="textToast" prefHeight="50.0" prefWidth="200.0" text="TEST" textAlignment="CENTER">
+            <font>
+                <Font name="System Bold" size="16.0" />
+            </font>
+        </Label>
+    </children>
+    <padding>
+        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+    </padding>
+</HBox>
