@@ -1,7 +1,10 @@
 # Video Transcriptor
-
-
 is a java desktop application made using javafx, youtube api, voice rss and assemblyai.
+
+# Dependencies
+1. JDK-19
+2. Javafx
+3. Maven
 
 # Features
 1. convert text to audio 
@@ -30,5 +33,5 @@ For installation instructions check [FFMPEG](https://ffmpeg.org/download.html) w
     YOUTUBE_API_KEY=
     ASSEMBLY_AI_API_KEY=
 ```
-
+## 6. Run main.java
 
